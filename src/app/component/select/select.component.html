@@ -1,0 +1,8 @@
+<mat-form-field appearance="legacy">
+  <mat-label>Direction</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let item of items" [value]="item.value">
+      {{item.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

@@ -1,10 +1,10 @@
 <div class="mainDivAddArtWork">
-  <div class="cardArtWork">
-    <app-clear-input [titleText]="'Athor'">salut tout le monde</app-clear-input>
-    <app-clear-input [titleText]="'Name'">ouii</app-clear-input>
-    <app-date-picker></app-date-picker>
-    <app-clear-description-input></app-clear-description-input>
-    <app-uploader></app-uploader>
-    <app-warning-button [buttonText]="'Add'"></app-warning-button>
+  <div class="mainCardsDiv">
+    <app-add-artwork-card></app-add-artwork-card>
+    <app-add-symbol-card></app-add-symbol-card>
+    <app-add-direction-card></app-add-direction-card>
+  </div>
+  <div class="buttonDiv">
+    <app-warning-button (click)="addToDatabase()" [buttonText]="'Add'"></app-warning-button>
   </div>
 </div>

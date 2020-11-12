@@ -12,4 +12,8 @@ export class AddArtWorkComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  addToDatabase():void{
+    console.log("tu as décidé d'ajouter dans la base de donnée..");
+  }
+
 }

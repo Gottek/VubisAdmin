@@ -39,6 +39,11 @@ import {ArtWorkService} from './services/art-work.service';
 import {DirectionService} from './services/direction.service';
 import {SymbolService} from './services/symbol.service';
 import {ImageStorageService} from './services/image-storage.service';
+import { AddArtworkCardComponent } from './component/add-artwork-card/add-artwork-card.component';
+import { AddSymbolCardComponent } from './component/add-symbol-card/add-symbol-card.component';
+import { AddDirectionCardComponent } from './component/add-direction-card/add-direction-card.component';
+import { SelectComponent } from './component/select/select.component';
+import {MatSelectModule} from '@angular/material/select';
 
 registerLocaleData(fr);
 
@@ -57,31 +62,36 @@ registerLocaleData(fr);
     UploaderComponent,
     MapsComponent,
     MapGridListComponent,
+    AddArtworkCardComponent,
+    AddSymbolCardComponent,
+    AddDirectionCardComponent,
+    SelectComponent,
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpClientModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    NzTabsModule,
-    MatTabsModule,
-    MatToolbarModule,
-    NzInputModule,
-    NzIconModule,
-    MatFormFieldModule,
-    MatIconModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule,
-    AngularFireStorageModule,
-    MatButtonModule,
-    MatInputModule,
-    MatCardModule,
-    MatGridListModule,
-    MatDatepickerModule,
-    NgZorroAntdModule,
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        HttpClientModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        NzTabsModule,
+        MatTabsModule,
+        MatToolbarModule,
+        NzInputModule,
+        NzIconModule,
+        MatFormFieldModule,
+        MatIconModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFirestoreModule,
+        AngularFireStorageModule,
+        MatButtonModule,
+        MatInputModule,
+        MatCardModule,
+        MatGridListModule,
+        MatDatepickerModule,
+        NgZorroAntdModule,
+        MatSelectModule,
+    ],
   providers: [ArtWorkService,ImageStorageService,DirectionService,SymbolService,{provide: NZ_I18N, useValue: fr_FR}],
   bootstrap: [AppComponent]
 })

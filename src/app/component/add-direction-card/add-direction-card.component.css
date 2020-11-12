@@ -1,0 +1,33 @@
+
+.cardArtWork {
+  background-color: white;
+  padding: 0 20px;
+  margin: 20px 0;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+h2 {
+  margin-top: 5px;
+}
+
+.directionDistanceDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+
+}
+
+app-clear-input {
+  margin: 10px;
+}
+
+app-warning-button {
+  margin-bottom: 10px;
+}

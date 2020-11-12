@@ -1,0 +1,8 @@
+<div class="cardArtWork">
+  <h2>Direction</h2>
+  <div class="directionDistanceDiv" *ngFor="let item of TableItem">
+    <app-select></app-select>
+    <app-clear-input [titleText]="'Distance'"></app-clear-input>
+  </div>
+  <app-warning-button (click)="addNewOne()" [buttonText]="'Add new one'"></app-warning-button>
+</div>

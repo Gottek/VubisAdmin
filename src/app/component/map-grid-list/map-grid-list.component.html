@@ -1,0 +1,9 @@
+<nz-divider nzOrientation="left" nzText="The maps"></nz-divider>
+<div nz-row [nzGutter]="4">
+  <div nz-col class="gutter-row" *ngFor="let map of MapsArray" [nzSpan]="12">
+    <div class="inner-box">
+      <img mat-card-image [src]="map" alt="map">
+    </div>
+  </div>
+
+</div>

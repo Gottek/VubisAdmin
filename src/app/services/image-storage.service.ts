@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AngularFireStorage} from '@angular/fire/storage';
 
 @Injectable({
@@ -6,30 +6,33 @@ import {AngularFireStorage} from '@angular/fire/storage';
 })
 export class ImageStorageService {
 
-  listRef = this.firestorage.storage.ref();
-  mapsArray=[];
-  constructor(private firestorage: AngularFireStorage) { }
+  private storageRef = this.firestorage.storage.ref();
+  private mapsArray = [];
+
+  constructor(private firestorage: AngularFireStorage) {
+  }
 
   async getArtworkImage(imageLink) {
-    // await listRef.listAll().then(result => result.items.forEach(imgRef=> imgRef.getDownloadURL().then(url => console.log(url))));
-    await this.listRef.child(`ArtImages/${imageLink}`).getDownloadURL().then(resp => imageLink = resp);
+    // await storageRef.storageAll().then(result => result.items.forEach(imgRef=> imgRef.getDownloadURL().then(url => console.log(url))));
+    await this.storageRef.child(`ArtImages/${imageLink}`).getDownloadURL().then(resp => imageLink = resp);
     return imageLink;
   }
-  async uploadArtworkImage(imageLink) {
-    // let listRef = this.firestorage.storage.ref();
-    // // await listRef.listAll().then(result => result.items.forEach(imgRef=> imgRef.getDownloadURL().then(url => console.log(url))));
-    // await listRef.child(`ArtImages/${imageLink}`).getDownloadURL().then(resp => imageLink = resp);
-    // return imageLink;
+
+  async uploadArtworkImage(fileName: string, img: Blob) {
+    this.storageRef.child(`ArtImages/${fileName}`).put(img).then(snapshot => console.log('Uploaded'));
+
   }
+
   async getMapsImage() {
-    await this.listRef.child("Maps").listAll().then(result => result.items.forEach(imgRef=> imgRef.getDownloadURL().then(url => this.mapsArray.push(url))));
+    await this.storageRef.child('Maps').listAll().then(result => result.items.forEach(imgRef => imgRef.getDownloadURL().then(url => this.mapsArray.push(url))));
     return this.mapsArray;
-    // await this.listRef.child(`Maps/${imageLink}`).getDownloadURL().then(resp => imageLink = resp);
+    // await this.storageRef.child(`Maps/${imageLink}`).getDownloadURL().then(resp => imageLink = resp);
   }
+
   async uploadMapsImage(imageLink) {
-    // let listRef = this.firestorage.storage.ref();
-    // // await listRef.listAll().then(result => result.items.forEach(imgRef=> imgRef.getDownloadURL().then(url => console.log(url))));
-    // await listRef.child(`ArtImages/${imageLink}`).getDownloadURL().then(resp => imageLink = resp);
+    // let storageRef = this.firestorage.storage.ref();
+    // // await storageRef.storageAll().then(result => result.items.forEach(imgRef=> imgRef.getDownloadURL().then(url => console.log(url))));
+    // await storageRef.child(`ArtImages/${imageLink}`).getDownloadURL().then(resp => imageLink = resp);
     // return imageLink;
   }
 

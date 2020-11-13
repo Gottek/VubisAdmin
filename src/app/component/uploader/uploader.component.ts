@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {NzMessageService, NzUploadChangeParam, NzUploadFile} from 'ng-zorro-antd';
+import {Component, OnInit} from '@angular/core';
+import {NzMessageService, NzUploadFile} from 'ng-zorro-antd';
 import {Observable, Observer} from 'rxjs';
+import {ImageStorageService} from '../../services/image-storage.service';
 
 @Component({
   selector: 'app-uploader',
@@ -11,8 +12,12 @@ export class UploaderComponent implements OnInit {
 
   loading = false;
   avatarUrl?: string;
+  image: File;
 
-  constructor(private msg: NzMessageService) {}
+  fileList: NzUploadFile[] = [];
+
+  constructor(private msg: NzMessageService, private imageService: ImageStorageService) {
+  }
 
   beforeUpload = (file: NzUploadFile, fileList: NzUploadFile[]) => {
     return new Observable((observer: Observer<boolean>) => {
@@ -31,7 +36,7 @@ export class UploaderComponent implements OnInit {
       observer.next(isJpgOrPng && isLt2M);
       observer.complete();
     });
-  }
+  };
 
   private getBase64(img: File, callback: (img: string) => void): void {
     const reader = new FileReader();
@@ -49,6 +54,7 @@ export class UploaderComponent implements OnInit {
         this.getBase64(info.file!.originFileObj!, (img: string) => {
           this.loading = false;
           this.avatarUrl = img;
+          this.image = info.file!.originFileObj!;
         });
         break;
       case 'error':
@@ -60,5 +66,4 @@ export class UploaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

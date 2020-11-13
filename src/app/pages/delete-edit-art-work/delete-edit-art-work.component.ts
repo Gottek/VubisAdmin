@@ -16,8 +16,8 @@ export class DeleteEditArtWorkComponent implements OnInit {
 
   ngOnInit(): void {
     this.artWorkService.getAllArtWorks().subscribe(Arrayreponse => {
-      this.ArtWorkArray = Arrayreponse.map(item => ({id: item.payload.doc.id, ...item.payload.doc.data() as {}} as ArtWork));
-      // this.ArtWorkArray.forEach(item => console.log(typeof item));
+      this.ArtWorkArray = Arrayreponse.map(item => ({id: item.payload.doc.id, ...item.payload.doc.data() as {}} as unknown as ArtWork));
+      // trouver une moyen de destructurer ici
     });
 
   }

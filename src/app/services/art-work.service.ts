@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ArtWork} from '../models/art-work.model';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {AngularFireStorage} from '@angular/fire/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +15,16 @@ export class ArtWorkService {
   getAllArtWorks() {
     return this.firestore.collection('ArtWork').snapshotChanges();
   }
+
+  addArtWorks(artWork) {
+    this.firestore.collection('ArtWork').add(artWork).then(res => console.log(res));
+  }
+
   deleteArtWorks() {
     return this.firestore.collection('ArtWork').snapshotChanges();
   }
- updateArtWorks() {
+
+  updateArtWorks() {
     return this.firestore.collection('ArtWork').snapshotChanges();
   }
 }

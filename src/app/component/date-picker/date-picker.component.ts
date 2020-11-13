@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DatePickerComponent implements OnInit {
 
+  Value:any;
   constructor() { }
 
   ngOnInit(): void {

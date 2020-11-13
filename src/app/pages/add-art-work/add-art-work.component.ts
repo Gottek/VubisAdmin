@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {ArtWork} from '../../models/art-work.model';
+import {Symbol} from '../../models/symbol.model';
+import {Direction} from '../../models/direction.model';
+import {AddArtworkCardComponent} from '../../component/add-artwork-card/add-artwork-card.component';
+import {AddSymbolCardComponent} from '../../component/add-symbol-card/add-symbol-card.component';
+import {AddDirectionCardComponent} from '../../component/add-direction-card/add-direction-card.component';
+import {ArtWorkService} from '../../services/art-work.service';
 
 @Component({
   selector: 'app-add-art-work',
@@ -7,13 +14,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddArtWorkComponent implements OnInit {
 
-  constructor() { }
+  Sybmol: Symbol;
+  Directions: Direction[];
+  @ViewChild(AddArtworkCardComponent) appArtWork: AddArtworkCardComponent;
+  @ViewChild(AddSymbolCardComponent) appSymbol: AddSymbolCardComponent;
+  @ViewChild(AddDirectionCardComponent) appDirection: AddDirectionCardComponent;
+
+  constructor(private ArtWorkService: ArtWorkService) {
+  }
 
   ngOnInit(): void {
   }
 
-  addToDatabase():void{
-    console.log("tu as décidé d'ajouter dans la base de donnée..");
+  addToDatabase(): void {
+    const artwork=this.appArtWork.creatArtWork();
+    this.ArtWorkService.addArtWorks(artwork);
   }
 
 }

@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClearDescriptionInputComponent implements OnInit {
 
+  value:string;
   constructor() { }
 
   ngOnInit(): void {

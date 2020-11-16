@@ -6,6 +6,8 @@ import {AddArtworkCardComponent} from '../../component/add-artwork-card/add-artw
 import {AddSymbolCardComponent} from '../../component/add-symbol-card/add-symbol-card.component';
 import {AddDirectionCardComponent} from '../../component/add-direction-card/add-direction-card.component';
 import {ArtWorkService} from '../../services/art-work.service';
+import {SymbolService} from '../../services/symbol.service';
+import {DirectionService} from '../../services/direction.service';
 
 @Component({
   selector: 'app-add-art-work',
@@ -20,15 +22,20 @@ export class AddArtWorkComponent implements OnInit {
   @ViewChild(AddSymbolCardComponent) appSymbol: AddSymbolCardComponent;
   @ViewChild(AddDirectionCardComponent) appDirection: AddDirectionCardComponent;
 
-  constructor(private ArtWorkService: ArtWorkService) {
+  constructor(private ArtWorkService: ArtWorkService,private SymbolService:SymbolService,private DirectionService:DirectionService) {
   }
 
   ngOnInit(): void {
   }
 
   addToDatabase(): void {
-    const artwork=this.appArtWork.creatArtWork();
-    this.ArtWorkService.addArtWorks(artwork);
+    // const artwork=this.appArtWork.creatArtWork();
+    // this.ArtWorkService.addArtWorks(artwork);
+    // const symbol=this.appSymbol.creatSymbol();
+    // this.SymbolService.addSymbol(symbol);
+    const directionArray=this.appDirection.creatDirections();
+    // this.DirectionService.addDirections(directionArray);
+
   }
 
 }

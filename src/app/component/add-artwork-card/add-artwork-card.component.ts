@@ -26,7 +26,7 @@ export class AddArtworkCardComponent implements OnInit {
 
   creatArtWork() {
     const image = this.UploaderInput.image;
-    this.ImageService.uploadArtworkImage(image.name, image).then();
+    this.ImageService.uploadImage('ArtImages', image.name, image).then();
     return {
       Author: this.AuthorInput.value,
       Date: this.DateInput.Value,

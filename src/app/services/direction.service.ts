@@ -11,12 +11,16 @@ export class DirectionService {
   constructor(private firestore: AngularFirestore) { }
 
   getAllDirection() {
-    return this.firestore.collection('ArtWork').snapshotChanges();
+    return this.firestore.collection('Direction').snapshotChanges();
+  }
+  addDirections(direction) {
+    const randomId=this.firestore.createId();
+    this.firestore.collection('Direction').doc(randomId).set(direction).then();
   }
   deleteDirection() {
-    return this.firestore.collection('ArtWork').snapshotChanges();
+    return this.firestore.collection('Direction').snapshotChanges();
   }
   updateDirection() {
-    return this.firestore.collection('ArtWork').snapshotChanges();
+    return this.firestore.collection('Direction').snapshotChanges();
   }
 }

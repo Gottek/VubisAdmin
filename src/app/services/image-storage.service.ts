@@ -18,8 +18,8 @@ export class ImageStorageService {
     return imageLink;
   }
 
-  async uploadArtworkImage(fileName: string, img: Blob) {
-    this.storageRef.child(`ArtImages/${fileName}`).put(img).then(snapshot => console.log('Uploaded'));
+  async uploadImage(repository:string,fileName: string, img: Blob) {
+    this.storageRef.child(`${repository}/${fileName}`).put(img).then(snapshot => console.log('Uploaded'));
 
   }
 

@@ -21,4 +21,5 @@ export class DeleteEditArtWorkComponent implements OnInit {
     });
 
   }
+
 }

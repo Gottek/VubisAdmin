@@ -9,7 +9,7 @@ import {fr_FR, NZ_I18N} from 'ng-zorro-antd/i18n';
 import {registerLocaleData} from '@angular/common';
 import fr from '@angular/common/locales/fr';
 import {AllTabsComponent} from './pages/all-tabs/all-tabs.component';
-import {NgZorroAntdModule, NzIconModule, NzInputModule, NzMessageService, NzTabsModule, NzUploadModule} from 'ng-zorro-antd';
+import {NgZorroAntdModule, NzIconModule, NzInputModule, NzTabsModule} from 'ng-zorro-antd';
 import {MatTabsModule} from '@angular/material/tabs';
 import {ToolbarComponent} from './component/toolbar/toolbar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -39,11 +39,12 @@ import {ArtWorkService} from './services/art-work.service';
 import {DirectionService} from './services/direction.service';
 import {SymbolService} from './services/symbol.service';
 import {ImageStorageService} from './services/image-storage.service';
-import { AddArtworkCardComponent } from './component/add-artwork-card/add-artwork-card.component';
-import { AddSymbolCardComponent } from './component/add-symbol-card/add-symbol-card.component';
-import { AddDirectionCardComponent } from './component/add-direction-card/add-direction-card.component';
-import { SelectComponent } from './component/select/select.component';
+import {AddArtworkCardComponent} from './component/add-artwork-card/add-artwork-card.component';
+import {AddSymbolCardComponent} from './component/add-symbol-card/add-symbol-card.component';
+import {AddDirectionCardComponent} from './component/add-direction-card/add-direction-card.component';
+import {SelectComponent} from './component/select/select.component';
 import {MatSelectModule} from '@angular/material/select';
+import { DialogDataComponent } from './component/cards/dialog-data/dialog-data.component';
 
 registerLocaleData(fr);
 
@@ -66,6 +67,7 @@ registerLocaleData(fr);
     AddSymbolCardComponent,
     AddDirectionCardComponent,
     SelectComponent,
+    DialogDataComponent,
   ],
     imports: [
         BrowserModule,
@@ -92,7 +94,7 @@ registerLocaleData(fr);
         NgZorroAntdModule,
         MatSelectModule,
     ],
-  providers: [ArtWorkService,ImageStorageService,DirectionService,SymbolService,{provide: NZ_I18N, useValue: fr_FR}],
+  providers: [ArtWorkService, ImageStorageService, DirectionService, SymbolService, {provide: NZ_I18N, useValue: fr_FR}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

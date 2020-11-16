@@ -1,11 +1,12 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {ArtWork} from '../../models/art-work.model';
 import {Symbol} from '../../models/symbol.model';
 import {Direction} from '../../models/direction.model';
 import {AddArtworkCardComponent} from '../../component/add-artwork-card/add-artwork-card.component';
 import {AddSymbolCardComponent} from '../../component/add-symbol-card/add-symbol-card.component';
 import {AddDirectionCardComponent} from '../../component/add-direction-card/add-direction-card.component';
 import {ArtWorkService} from '../../services/art-work.service';
+import {SymbolService} from '../../services/symbol.service';
+import {DirectionService} from '../../services/direction.service';
 
 @Component({
   selector: 'app-add-art-work',
@@ -14,21 +15,30 @@ import {ArtWorkService} from '../../services/art-work.service';
 })
 export class AddArtWorkComponent implements OnInit {
 
+  // tslint:disable-next-line:ban-types
   Sybmol: Symbol;
   Directions: Direction[];
   @ViewChild(AddArtworkCardComponent) appArtWork: AddArtworkCardComponent;
   @ViewChild(AddSymbolCardComponent) appSymbol: AddSymbolCardComponent;
   @ViewChild(AddDirectionCardComponent) appDirection: AddDirectionCardComponent;
 
-  constructor(private ArtWorkService: ArtWorkService) {
+  // tslint:disable-next-line:no-shadowed-variable
+  constructor(private ArtWorkService: ArtWorkService, private DirectionService: DirectionService, private SymbolService: SymbolService) {
   }
 
   ngOnInit(): void {
   }
 
   addToDatabase(): void {
-    const artwork=this.appArtWork.creatArtWork();
+    const artwork = this.appArtWork.creatArtWork();
     this.ArtWorkService.addArtWorks(artwork);
-  }
+    const symbol = this.appSymbol.creatSymbol();
+    this.SymbolService.addSymbol(symbol);
+    /*const direction = this.appDirection.creatDirections();
+    this.DirectionService.addDirection(direction);*/
 
+    console.log('ArtWork : ', artwork);
+    console.log('Symbol : ', symbol);
+    // console.log('Direction : ', direction);
+  }
 }

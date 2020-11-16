@@ -6,17 +6,20 @@ import {AngularFirestore} from '@angular/fire/firestore';
   providedIn: 'root'
 })
 export class DirectionService {
-  formData: Direction;
 
   constructor(private firestore: AngularFirestore) { }
 
   getAllDirection() {
-    return this.firestore.collection('ArtWork').snapshotChanges();
+    return this.firestore.collection('Direction').snapshotChanges();
+  }
+
+  addDirection(direction) {
+    this.firestore.collection('Direction').add(direction).then(res => console.log(res));
   }
   deleteDirection() {
-    return this.firestore.collection('ArtWork').snapshotChanges();
+    return this.firestore.collection('Direction').snapshotChanges();
   }
   updateDirection() {
-    return this.firestore.collection('ArtWork').snapshotChanges();
+    return this.firestore.collection('Direction').snapshotChanges();
   }
 }

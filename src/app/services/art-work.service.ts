@@ -7,8 +7,6 @@ import {AngularFirestore} from '@angular/fire/firestore';
 })
 export class ArtWorkService {
 
-  formData: ArtWork;
-
   constructor(private firestore: AngularFirestore) {
   }
 
@@ -20,11 +18,11 @@ export class ArtWorkService {
     this.firestore.collection('ArtWork').add(artWork).then(res => console.log(res));
   }
 
-  deleteArtWorks() {
-    return this.firestore.collection('ArtWork').snapshotChanges();
+  deleteArtWorks(artworkId) {
+    this.firestore.collection('ArtWork').doc(artworkId).delete().then(res => console.log(res));
   }
 
-  updateArtWorks() {
-    return this.firestore.collection('ArtWork').snapshotChanges();
+  updateArtWorks(artWork) {
+    this.firestore.collection('ArtWork').doc(artWork.id).set(artWork).then(res => console.log(res));
   }
 }

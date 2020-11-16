@@ -27,6 +27,7 @@ export class UploaderComponent implements OnInit {
         observer.complete();
         return;
       }
+      // tslint:disable-next-line:no-non-null-assertion
       const isLt2M = file.size! / 1024 / 1024 < 2;
       if (!isLt2M) {
         this.msg.error('Image must smaller than 2MB!');
@@ -36,10 +37,11 @@ export class UploaderComponent implements OnInit {
       observer.next(isJpgOrPng && isLt2M);
       observer.complete();
     });
-  };
+  }
 
   private getBase64(img: File, callback: (img: string) => void): void {
     const reader = new FileReader();
+    // tslint:disable-next-line:no-non-null-assertion
     reader.addEventListener('load', () => callback(reader.result!.toString()));
     reader.readAsDataURL(img);
   }
@@ -51,9 +53,11 @@ export class UploaderComponent implements OnInit {
         break;
       case 'done':
         // Get this url from response in real world.
+        // tslint:disable-next-line:no-non-null-assertion
         this.getBase64(info.file!.originFileObj!, (img: string) => {
           this.loading = false;
           this.avatarUrl = img;
+          // tslint:disable-next-line:no-non-null-assertion
           this.image = info.file!.originFileObj!;
         });
         break;

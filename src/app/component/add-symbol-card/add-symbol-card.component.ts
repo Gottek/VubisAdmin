@@ -20,7 +20,10 @@ export class AddSymbolCardComponent implements OnInit {
   }
 
   creatSymbol(){
-
+    return {
+      Symbol : this.SymbolInput.value,
+      url : this.UploaderInput.avatarUrl
+    };
   }
 
 }

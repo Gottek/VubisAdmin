@@ -1,5 +1,4 @@
-import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
-import {Direction} from '../../models/direction.model';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ClearInputComponent} from '../clear-input/clear-input.component';
 import {UploaderComponent} from '../uploader/uploader.component';
 import {SelectComponent} from '../select/select.component';
@@ -11,11 +10,11 @@ import {SelectComponent} from '../select/select.component';
 })
 export class AddDirectionCardComponent implements OnInit {
 
-  TableItem=[1];
+  TableItem = [1];
 
   @ViewChild(ClearInputComponent) DistanceInput: ClearInputComponent;
   @ViewChild(SelectComponent) SelectInput: UploaderComponent;
-  constructor() { }
+  constructor(  ) { }
 
   ngOnInit(): void {
   }
@@ -25,6 +24,12 @@ export class AddDirectionCardComponent implements OnInit {
   }
 
   creatDirections(){
-    console.log("you are creating Directions");
+    console.log('you are creating Directions');
+    const directions = {
+      direction: this.DistanceInput.value,
+      // distance: this.SelectInput.value,
+    };
+    console.log(directions);
+    // return directions;
   }
 }

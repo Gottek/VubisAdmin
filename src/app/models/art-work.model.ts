@@ -1,11 +1,11 @@
 export class ArtWork {
 
-  private id: string;
-  private Author: string;
-  private Date: dateFns;
-  private Description: string;
-  private Title: string;
-  private Urimage: string;
+  id: string;
+  Author: string;
+  Date: dateFns;
+  Description: string;
+  Title: string;
+  Urimage: string;
 
   constructor(id: string, Author: string, Date: dateFns, Description: string, Title: string, Urimage: string) {
     this.id = id;

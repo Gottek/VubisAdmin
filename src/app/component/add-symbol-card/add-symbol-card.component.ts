@@ -1,7 +1,8 @@
-import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
-import {DatePickerComponent} from '../date-picker/date-picker.component';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {UploaderComponent} from '../uploader/uploader.component';
 import {ClearInputComponent} from '../clear-input/clear-input.component';
+import {ImageStorageService} from '../../services/image-storage.service';
+import {ArtWorkService} from '../../services/art-work.service';
 
 @Component({
   selector: 'app-add-symbol-card',
@@ -14,16 +15,20 @@ export class AddSymbolCardComponent implements OnInit {
 
   @ViewChild(ClearInputComponent) SymbolInput: ClearInputComponent;
   @ViewChild(UploaderComponent) UploaderInput: UploaderComponent;
-  constructor() { }
+
+  constructor(private ImageService: ImageStorageService, private ArtWorkService: ArtWorkService) {
+  }
 
   ngOnInit(): void {
   }
 
-  creatSymbol(){
+  creatSymbol() {
+    const image = this.UploaderInput.image;
+    this.ImageService.uploadImage('Maps', image.name, image).then();
     return {
-      Symbol : this.SymbolInput.value,
-      url : this.UploaderInput.avatarUrl
+      Symbol: this.SymbolInput.value,
+      url: image.name,
+      idArtwork: this.ArtWorkService.currentArtWorkId
     };
   }
-
 }

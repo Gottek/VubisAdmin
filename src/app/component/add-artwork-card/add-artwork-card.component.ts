@@ -1,11 +1,10 @@
-import {Component, Inject, Input, OnInit, Optional, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {ClearInputComponent} from '../clear-input/clear-input.component';
 import {ClearDescriptionInputComponent} from '../clear-description-input/clear-description-input.component';
 import {DatePickerComponent} from '../date-picker/date-picker.component';
 import {UploaderComponent} from '../uploader/uploader.component';
 import {ImageStorageService} from '../../services/image-storage.service';
 import {ArtWork} from '../../models/art-work.model';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-artwork-card',
@@ -30,7 +29,7 @@ export class AddArtworkCardComponent implements OnInit {
 
   creatArtWork() {
     const image = this.UploaderInput.image;
-    this.ImageService.uploadArtworkImage(image.name, image).then();
+    this.ImageService.uploadImage('ArtImages', image.name, image).then();
     return {
       Author: this.AuthorInput.value,
       Date: this.DateInput.Value,

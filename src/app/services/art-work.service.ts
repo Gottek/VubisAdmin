@@ -7,6 +7,10 @@ import {AngularFirestore} from '@angular/fire/firestore';
 })
 export class ArtWorkService {
 
+
+  formData: ArtWork;
+  currentArtWorkId;
+
   constructor(private firestore: AngularFirestore) {
   }
 
@@ -15,7 +19,9 @@ export class ArtWorkService {
   }
 
   addArtWorks(artWork) {
-    this.firestore.collection('ArtWork').add(artWork).then(res => console.log(res));
+    const randomId = this.firestore.createId();
+    this.currentArtWorkId = randomId;
+    this.firestore.collection('ArtWork').doc(randomId).set(artWork).then();
   }
 
   deleteArtWorks(artworkId) {

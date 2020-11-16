@@ -22,23 +22,25 @@ export class AddArtWorkComponent implements OnInit {
   @ViewChild(AddSymbolCardComponent) appSymbol: AddSymbolCardComponent;
   @ViewChild(AddDirectionCardComponent) appDirection: AddDirectionCardComponent;
 
-  // tslint:disable-next-line:no-shadowed-variable
-  constructor(private ArtWorkService: ArtWorkService, private DirectionService: DirectionService, private SymbolService: SymbolService) {
-  }
+
+  constructor(private ArtWorkService: ArtWorkService, private DirectionService: DirectionService, private SymbolService: SymbolService) {}
+
 
   ngOnInit(): void {
   }
 
   addToDatabase(): void {
-    const artwork = this.appArtWork.creatArtWork();
-    this.ArtWorkService.addArtWorks(artwork);
-    const symbol = this.appSymbol.creatSymbol();
-    this.SymbolService.addSymbol(symbol);
-    /*const direction = this.appDirection.creatDirections();
-    this.DirectionService.addDirection(direction);*/
 
-    console.log('ArtWork : ', artwork);
-    console.log('Symbol : ', symbol);
+    // const artwork=this.appArtWork.creatArtWork();
+    // this.ArtWorkService.addArtWorks(artwork);
+    // const symbol=this.appSymbol.creatSymbol();
+    // this.SymbolService.addSymbol(symbol);
+    const directionArray=this.appDirection.creatDirections();
+    // this.DirectionService.addDirections(directionArray);
+
+    // console.log('ArtWork : ', artwork);
+    // console.log('Symbol : ', symbol);
     // console.log('Direction : ', direction);
+
   }
 }

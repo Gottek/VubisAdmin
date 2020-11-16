@@ -12,9 +12,9 @@ export class DirectionService {
   getAllDirection() {
     return this.firestore.collection('Direction').snapshotChanges();
   }
-
-  addDirection(direction) {
-    this.firestore.collection('Direction').add(direction).then(res => console.log(res));
+  addDirections(direction) {
+    const randomId = this.firestore.createId();
+    this.firestore.collection('Direction').doc(randomId).set(direction).then();
   }
   deleteDirection() {
     return this.firestore.collection('Direction').snapshotChanges();

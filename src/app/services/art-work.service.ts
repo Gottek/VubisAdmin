@@ -7,7 +7,6 @@ import {AngularFirestore} from '@angular/fire/firestore';
 })
 export class ArtWorkService {
 
-
   formData: ArtWork;
   currentArtWorkId;
 

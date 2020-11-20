@@ -2,12 +2,12 @@ export class ArtWork {
 
   private _id: string;
   private _Author: string;
-  private _Date: dateFns;
+  private _Date: Date;
   private _Description: string;
   private _Title: string;
   private _Urimage: string;
 
-  constructor(id: string, Author: string, Date: dateFns, Description: string, Title: string, Urimage: string) {
+  constructor(id: string, Author: string, Date: Date, Description: string, Title: string, Urimage: string) {
     this._id = id;
     this._Author = Author;
     this._Date = Date;
@@ -33,11 +33,11 @@ export class ArtWork {
     this._Author = value;
   }
 
-  get Date(): dateFns {
+  get Date(): Date {
     return this._Date;
   }
 
-  set Date(value: dateFns) {
+  set Date(value: Date) {
     this._Date = value;
   }
 

@@ -1,17 +1,23 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Inject, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {ClearInputComponent} from '../clear-input/clear-input.component';
 import {ClearDescriptionInputComponent} from '../clear-description-input/clear-description-input.component';
 import {DatePickerComponent} from '../date-picker/date-picker.component';
 import {UploaderComponent} from '../uploader/uploader.component';
 import {ImageStorageService} from '../../services/image-storage.service';
 import {ArtWork} from '../../models/art-work.model';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {ArtWorkService} from '../../services/art-work.service';
 
 @Component({
   selector: 'app-add-artwork-card',
   templateUrl: './add-artwork-card.component.html',
   styleUrls: ['./add-artwork-card.component.css']
 })
-export class AddArtworkCardComponent implements OnInit {
+export class AddArtworkCardComponent implements OnInit, AfterViewInit {
+
+
+  @Input() artWork: ArtWork = new ArtWork(null, '', new Date(), '', '', '');
+  @Output() newArtWork = new EventEmitter<ArtWork>();
 
   @ViewChild('AuthorArtWork') AuthorInput: ClearInputComponent;
   @ViewChild('NameArtWork') NameInput: ClearInputComponent;
@@ -19,7 +25,6 @@ export class AddArtworkCardComponent implements OnInit {
   @ViewChild(DatePickerComponent) DateInput: DatePickerComponent;
   @ViewChild(UploaderComponent) UploaderInput: UploaderComponent;
 
-  @Input() artWork: ArtWork;
 
   constructor(private ImageService: ImageStorageService) {
   }
@@ -37,5 +42,21 @@ export class AddArtworkCardComponent implements OnInit {
       Title: this.NameInput.value,
       Urimage: image.name
     };
+  }
+  ngAfterViewInit(): void {
+    console.log('afterOnInit 2 ');
+    if (this.artWork){
+      this.AuthorInput.value = this.artWork.Author;
+      this.NameInput.value = this.artWork.Title;
+      this.DescriptionInput.value = this.artWork.Description;
+      this.DateInput.Value = this.artWork.Date;
+      this.UploaderInput.avatarUrl = this.artWork.Urimage;
+    }
+
+  }
+
+  onChangeValues(): void {
+    console.log('onChange');
+    console.log(this.artWork);
   }
 }

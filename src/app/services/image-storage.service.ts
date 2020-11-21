@@ -19,8 +19,11 @@ export class ImageStorageService {
   }
 
   async uploadImage(repository:string,fileName: string, img: Blob) {
-    this.storageRef.child(`${repository}/${fileName}`).put(img).then(snapshot => console.log('Uploaded'));
+    return this.storageRef.child(`${repository}/${fileName}`).put(img);
+  }
 
+  async deletePreviousImage(repository:string,fileName: string){
+    this.storageRef.child(`${repository}/${fileName}`).delete().then(snapshot => console.log('deleted'));
   }
 
   async getMapsImage() {

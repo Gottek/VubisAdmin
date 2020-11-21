@@ -44,7 +44,6 @@ import {AddSymbolCardComponent} from './component/add-symbol-card/add-symbol-car
 import {AddDirectionCardComponent} from './component/add-direction-card/add-direction-card.component';
 import {SelectComponent} from './component/select/select.component';
 import {MatSelectModule} from '@angular/material/select';
-import { DialogDataComponent } from './component/cards/dialog-data/dialog-data.component';
 
 registerLocaleData(fr);
 
@@ -67,7 +66,6 @@ registerLocaleData(fr);
     AddSymbolCardComponent,
     AddDirectionCardComponent,
     SelectComponent,
-    DialogDataComponent,
   ],
     imports: [
         BrowserModule,

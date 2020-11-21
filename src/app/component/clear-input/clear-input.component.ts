@@ -7,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ClearInputComponent implements OnInit {
 
-  value = '';
+  @Input() value = '';
 
   @Input()
   titleText = 'An example';

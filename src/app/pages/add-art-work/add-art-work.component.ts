@@ -24,7 +24,8 @@ export class AddArtWorkComponent implements OnInit {
 
 
   // tslint:disable-next-line:no-shadowed-variable
-  constructor(private ArtWorkService: ArtWorkService, private DirectionService: DirectionService, private SymbolService: SymbolService) {}
+  constructor(private ArtWorkService: ArtWorkService, private DirectionService: DirectionService, private SymbolService: SymbolService) {
+  }
 
 
   ngOnInit(): void {

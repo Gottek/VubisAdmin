@@ -1,10 +1,9 @@
 <div class="cardArtWork">
-    <h2>ArtWork</h2>
-    <app-clear-input [(ngModel)]="artWork.Author" ngDefaultControl [titleText]="'Author'" #AuthorArtWork></app-clear-input>
-    <app-clear-input [(ngModel)]="artWork.Title" [titleText]="'Name'" #NameArtWork></app-clear-input>
-    <app-date-picker [(ngModel)]="artWork.Date" ></app-date-picker>
-    <app-clear-description-input [(ngModel)]="artWork.Description" ></app-clear-description-input>
-    <app-uploader [(ngModel)]="artWork.Urimage" ></app-uploader>
-    <button *ngIf="artWork.id" (click)="onChangeValues()"> Confirm </button>
+  <h2>ArtWork</h2>
+  <app-clear-input [value]="artWork.Author" ngDefaultControl [titleText]="'Author'" #AuthorArtWork></app-clear-input>
+  <app-clear-input [value]="artWork.Title" [titleText]="'Name'" #NameArtWork></app-clear-input>
+  <app-date-picker [value]="artWork.Date"></app-date-picker>
+  <app-clear-description-input [value]="artWork.Description"></app-clear-description-input>
+  <app-uploader [avatarUrl]="imageLink"></app-uploader>
 
 </div>

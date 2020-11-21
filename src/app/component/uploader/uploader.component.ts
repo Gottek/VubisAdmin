@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {NzMessageService, NzUploadFile} from 'ng-zorro-antd';
 import {Observable, Observer} from 'rxjs';
 import {ImageStorageService} from '../../services/image-storage.service';
@@ -11,9 +11,8 @@ import {ImageStorageService} from '../../services/image-storage.service';
 export class UploaderComponent implements OnInit {
 
   loading = false;
-  avatarUrl?: string;
+  @Input() avatarUrl?: string;
   image: File;
-
   fileList: NzUploadFile[] = [];
 
   constructor(private msg: NzMessageService, private imageService: ImageStorageService) {

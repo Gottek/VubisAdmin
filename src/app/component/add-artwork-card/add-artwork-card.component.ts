@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {ClearInputComponent} from '../clear-input/clear-input.component';
 import {ClearDescriptionInputComponent} from '../clear-description-input/clear-description-input.component';
 import {DatePickerComponent} from '../date-picker/date-picker.component';
@@ -12,10 +12,11 @@ import {ArtWorkService} from '../../services/art-work.service';
   templateUrl: './add-artwork-card.component.html',
   styleUrls: ['./add-artwork-card.component.css']
 })
-export class AddArtworkCardComponent implements OnInit, AfterViewInit {
+export class AddArtworkCardComponent implements OnInit {
 
 
   @Input() artWork: ArtWork = new ArtWork(null, '', new Date(), '', '', '');
+  @Input()imageLink='';
   @Output() newArtWork = new EventEmitter<ArtWork>();
 
   @ViewChild('AuthorArtWork') AuthorInput: ClearInputComponent;
@@ -25,7 +26,6 @@ export class AddArtworkCardComponent implements OnInit, AfterViewInit {
   @ViewChild(UploaderComponent) UploaderInput: UploaderComponent;
 
 
-  // tslint:disable-next-line:no-shadowed-variable
   constructor(private ImageService: ImageStorageService, private ArtWorkService: ArtWorkService) {
   }
 
@@ -37,31 +37,20 @@ export class AddArtworkCardComponent implements OnInit, AfterViewInit {
     this.ImageService.uploadImage('ArtImages', image.name, image).then();
     return {
       Author: this.AuthorInput.value,
-      Date: this.DateInput.Value,
+      Date: this.DateInput.value,
       Description: this.DescriptionInput.value,
       Title: this.NameInput.value,
       Urimage: image.name
     };
   }
-  ngAfterViewInit(): void {
-    console.log('afterOnInit 2 ');
-    console.log(this.artWork.id);
 
-    if (this.artWork.id){
-      console.log('afterOnInit 2 ok');
-      this.AuthorInput.value = this.artWork.Author;
-      this.NameInput.value = this.artWork.Title;
-      this.DescriptionInput.value = this.artWork.Description;
-      this.DateInput.Value = this.artWork.Date;
-      this.UploaderInput.avatarUrl = this.artWork.Urimage;
-    }
-
-  }
-
-  onChangeValues(): void {
-    console.log('onChange');
-    console.log(this.artWork.Author);
-    console.log(this.AuthorInput.value);
-    // this.ArtWorkService.updateArtWorks(this.artWork);
-  }
+  // ngAfterViewInit(): void {
+  //   console.log('afterOnInit 2 ');
+  //   console.log(this.artWork);
+  //   this.AuthorInput.value = this.artWork.Author;
+  //   this.NameInput.value = this.artWork.Title;
+  //   this.DescriptionInput.value = this.artWork.Description;
+  //   this.DateInput.Value = this.artWork.Date;
+  //   this.UploaderInput.avatarUrl = this.artWork.Urimage;
+  // }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-clear-description-input',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClearDescriptionInputComponent implements OnInit {
 
-  value:string;
+  @Input() value = '';
   constructor() { }
 
   ngOnInit(): void {

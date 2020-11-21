@@ -1,20 +1,31 @@
 <mat-card class="example-card">
   <mat-card-header>
-    <mat-card-title>{{ArtWork.Title}}</mat-card-title>
-    <mat-card-subtitle>{{ArtWork.Author}}</mat-card-subtitle>
+    <mat-card-title>{{artWork.Title}}</mat-card-title>
+    <mat-card-subtitle>{{artWork.Author}}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image [src]="ArtWorkImageLink" alt="Photo of {{ArtWork.Title}}">
+  <img mat-card-image [src]="ArtWorkImageLink" alt="Photo of {{artWork.Title}}">
   <mat-card-content>
     <p>
-      Date: {{ArtWork.Date}}
+      Date: {{artWork.Date}}
     </p>
     <p>
-      {{ArtWork.Description}}
+      {{artWork.Description}}
     </p>
   </mat-card-content>
   <mat-card-actions>
     <button mat-button (click)="onDelete()">DELETE</button>
-    <button mat-button (click)="openDialog()"> EDIT </button>
+    <button mat-button (click)="showModalMiddle()"> EDIT</button>
 
   </mat-card-actions>
 </mat-card>
+
+<nz-modal
+  nzWrapClassName="vertical-center-modal"
+  [(nzVisible)]="isVisibleMiddle"
+  nzTitle="ArtWork : {{artWork.Title}}"
+  (nzOnCancel)="handleCancelMiddle()"
+  (nzOnOk)="handleOkMiddle()"
+>
+  <app-add-artwork-card [artWork]="artWork" [imageLink]="ArtWorkImageLink"></app-add-artwork-card>
+</nz-modal>
+

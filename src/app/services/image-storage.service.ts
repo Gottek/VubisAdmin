@@ -18,11 +18,11 @@ export class ImageStorageService {
     return imageLink;
   }
 
-  async uploadImage(repository:string,fileName: string, img: Blob) {
+  async uploadImage(repository: string,  fileName: string, img: Blob) {
     return this.storageRef.child(`${repository}/${fileName}`).put(img);
   }
 
-  async deletePreviousImage(repository:string,fileName: string){
+  async deletePreviousImage(repository: string, fileName: string){
     this.storageRef.child(`${repository}/${fileName}`).delete().then(snapshot => console.log('deleted'));
   }
 

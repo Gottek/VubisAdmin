@@ -36,13 +36,15 @@ export class AddArtWorkComponent implements OnInit {
     // const artwork=this.appArtWork.creatArtWork();
     // this.ArtWorkService.addArtWorks(artwork);
     // const symbol=this.appSymbol.creatSymbol();
+    // symbol.idArtWork = artwork.idArtWork;
     // this.SymbolService.addSymbol(symbol);
     const directionArray = this.appDirection.creatDirections();
+    // directionArray.idArtWork = artwork.idArtWork;
     // this.DirectionService.addDirections(directionArray);
 
     // console.log('ArtWork : ', artwork);
     // console.log('Symbol : ', symbol);
-    // console.log('Direction : ', direction);
+    // console.log('Direction : ', directionArray);
 
   }
 }

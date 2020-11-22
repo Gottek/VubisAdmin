@@ -13,7 +13,7 @@
   justify-content: space-around;
   flex-direction: row;
   flex-wrap: wrap;
-  margin: 120px;
+  /*margin: 200px;*/
 }
 
 .cardArtWork {
@@ -26,3 +26,10 @@
   justify-content: space-around;
   flex-direction: column;
 }
+
+.buttonDiv{
+  /*position: absolute;*/
+  /*bottom: 10px;*/
+  padding: 20px;
+}
+

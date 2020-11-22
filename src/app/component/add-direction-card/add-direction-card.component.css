@@ -31,3 +31,6 @@ app-clear-input {
 app-warning-button {
   margin-bottom: 10px;
 }
+.espacedBtn {
+  margin: 25px;
+}

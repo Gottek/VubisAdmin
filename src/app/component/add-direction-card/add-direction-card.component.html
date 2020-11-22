@@ -1,8 +1,24 @@
 <div class="cardArtWork">
   <h2>Direction</h2>
-  <div class="directionDistanceDiv" *ngFor="let item of TableItem">
-    <app-select></app-select>
-    <app-clear-input [titleText]="'Distance'" ></app-clear-input>
+  <!--<div class="directionDistanceDiv" *ngFor="let item of TableItem">
+    <app-select [id]="item.id" [modelValue]="item.direction"> </app-select>
+    <app-clear-input [id]="item.id" [value]="item.distance" [titleText]="'Distance'">  </app-clear-input>
+    {{item.id}}
+  </div>-->
+  <div class="directionDistanceDiv" *ngFor="let item of myItems.controls; index as i">
+    <app-select [id]="i" [modelValue]="item.value[0]" > </app-select>
+    <app-clear-input [id]="i" [value]="item.value[1]" [titleText]="'Distance'">  </app-clear-input>
+    {{i}}
   </div>
-  <app-warning-button (click)="addNewOne()" [buttonText]="'Add new one'"></app-warning-button>
+
+  <div class="espacedBtn">
+    <button mat-mini-fab color="primary" (click)="addNewOne()">
+      <mat-icon>add</mat-icon>
+    </button>
+<!--    <button mat-mini-fab color="primary" *ngIf="TableItem.length>1" (click)="removeOne()">-->
+    <button mat-mini-fab color="primary" *ngIf="myItems.controls.length>1" (click)="removeOne()">
+      <mat-icon>remove</mat-icon>
+    </button>
+  </div>
+
 </div>

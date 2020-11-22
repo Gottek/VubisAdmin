@@ -16,7 +16,7 @@ export class AddArtworkCardComponent implements OnInit {
 
 
   @Input() artWork: ArtWork = new ArtWork(null, '', new Date(), '', '', '');
-  @Input()imageLink='';
+  @Input()imageLink = '';
   @Output() newArtWork = new EventEmitter<ArtWork>();
 
   @ViewChild('AuthorArtWork') AuthorInput: ClearInputComponent;
@@ -26,7 +26,8 @@ export class AddArtworkCardComponent implements OnInit {
   @ViewChild(UploaderComponent) UploaderInput: UploaderComponent;
 
 
-  constructor(private ImageService: ImageStorageService, private ArtWorkService: ArtWorkService) {
+  // tslint:disable-next-line:no-shadowed-variable
+  constructor(private ImageService: ImageStorageService) {
   }
 
   ngOnInit(): void {
@@ -44,13 +45,4 @@ export class AddArtworkCardComponent implements OnInit {
     };
   }
 
-  // ngAfterViewInit(): void {
-  //   console.log('afterOnInit 2 ');
-  //   console.log(this.artWork);
-  //   this.AuthorInput.value = this.artWork.Author;
-  //   this.NameInput.value = this.artWork.Title;
-  //   this.DescriptionInput.value = this.artWork.Description;
-  //   this.DateInput.Value = this.artWork.Date;
-  //   this.UploaderInput.avatarUrl = this.artWork.Urimage;
-  // }
 }

@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {AddDirectionCardComponent} from '../add-direction-card/add-direction-card.component';
 
 @Component({
   selector: 'app-clear-input',
@@ -8,12 +9,20 @@ import {Component, Input, OnInit} from '@angular/core';
 export class ClearInputComponent implements OnInit {
 
   @Input() value = '';
+  @Input() id;
 
-  @Input()
-  titleText = 'An example';
-  constructor() { }
+  @Input() titleText = 'An example';
+
+  constructor() {
+  }
 
   ngOnInit(): void {
+  }
+
+  onChange(): void {
+    console.log(this.value);
+    console.log(this.id);
+
   }
 
 }

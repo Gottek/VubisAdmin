@@ -27,7 +27,7 @@ export class ArtWorkService {
     this.firestore.collection('ArtWork').doc(artworkId).delete().then(res => console.log(res));
   }
 
-  updateArtWorks(id:string,artWork) {
+  updateArtWorks(id: string, artWork) {
     this.firestore.collection('ArtWork').doc(id).set(artWork).then(res => console.log(res));
   }
 }

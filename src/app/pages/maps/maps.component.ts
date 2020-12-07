@@ -7,11 +7,11 @@ import {Component, OnInit} from '@angular/core';
 })
 export class MapsComponent implements OnInit {
 
-
   constructor() {
   }
 
   ngOnInit(): void {
+
   }
 
 }

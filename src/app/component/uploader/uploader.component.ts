@@ -1,21 +1,48 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {NzMessageService, NzUploadFile} from 'ng-zorro-antd';
 import {Observable, Observer} from 'rxjs';
 import {ImageStorageService} from '../../services/image-storage.service';
+import {element} from 'protractor';
 
 @Component({
   selector: 'app-uploader',
   templateUrl: './uploader.component.html',
   styleUrls: ['./uploader.component.css']
 })
-export class UploaderComponent implements OnInit {
+export class UploaderComponent implements OnInit, AfterViewInit {
 
   loading = false;
   @Input() avatarUrl?: string;
   image: File;
   fileList: NzUploadFile[] = [];
+  ImageContainer;
+  canvas;
+  context;
 
   constructor(private msg: NzMessageService, private imageService: ImageStorageService) {
+  }
+
+  ngAfterViewInit(): void {
+    this.ImageContainer = document.getElementById('getContainer');
+    this.canvas = document.getElementById('myCanvas');
+    this.context = this.canvas.getContext('2d');
+  }
+
+  ngOnInit(): void {
+
+  }
+
+  getClickPosition(e): void {
+    // console.log(e);
+    let xPosition = e.offsetX;
+    let yPosition = e.offsetY;
+    // console.log(e.offsetX + ' : ' + e.offsetY);
+    // console.log(document.body.getBoundingClientRect());
+    console.log(xPosition + ' : ' + yPosition);
+
+    this.context.beginPath();
+    this.context.arc(xPosition , yPosition , 5, 0, 2 * Math.PI);
+    this.context.stroke();
   }
 
   beforeUpload = (file: NzUploadFile, fileList: NzUploadFile[]) => {
@@ -36,7 +63,7 @@ export class UploaderComponent implements OnInit {
       observer.next(isJpgOrPng && isLt2M);
       observer.complete();
     });
-  }
+  };
 
   private getBase64(img: File, callback: (img: string) => void): void {
     const reader = new FileReader();
@@ -67,6 +94,4 @@ export class UploaderComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-  }
 }

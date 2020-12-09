@@ -20,9 +20,6 @@ export class ClearInputComponent implements OnInit {
   }
 
   onChange(): void {
-    console.log(this.value);
-    console.log(this.id);
-
   }
 
 }

@@ -23,27 +23,27 @@ export class UploaderComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.ImageContainer = document.getElementById('getContainer');
-    this.canvas = document.getElementById('myCanvas');
-    this.context = this.canvas.getContext('2d');
+  //   this.ImageContainer = document.getElementById('getContainer');
+  //   this.canvas = document.getElementById('myCanvas');
+  //   this.context = this.canvas.getContext('2d');
   }
 
   ngOnInit(): void {
 
   }
 
-  getClickPosition(e): void {
-    // console.log(e);
-    let xPosition = e.offsetX;
-    let yPosition = e.offsetY;
-    // console.log(e.offsetX + ' : ' + e.offsetY);
-    // console.log(document.body.getBoundingClientRect());
-    console.log(xPosition + ' : ' + yPosition);
-
-    this.context.beginPath();
-    this.context.arc(xPosition , yPosition , 5, 0, 2 * Math.PI);
-    this.context.stroke();
-  }
+  // getClickPosition(e): void {
+  //   // console.log(e);
+  //   let xPosition = e.offsetX;
+  //   let yPosition = e.offsetY;
+  //   // console.log(e.offsetX + ' : ' + e.offsetY);
+  //   // console.log(document.body.getBoundingClientRect());
+  //   console.log(xPosition + ' : ' + yPosition);
+  //
+  //   this.context.beginPath();
+  //   this.context.arc(xPosition , yPosition , 5, 0, 2 * Math.PI);
+  //   this.context.stroke();
+  // }
 
   beforeUpload = (file: NzUploadFile, fileList: NzUploadFile[]) => {
     return new Observable((observer: Observer<boolean>) => {

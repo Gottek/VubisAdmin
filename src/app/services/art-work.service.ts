@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ArtWork} from '../models/art-work.model';
 import {AngularFirestore} from '@angular/fire/firestore';
+import {ImageStorageService} from './image-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class ArtWorkService {
   formData: ArtWork;
   currentArtWorkId;
 
-  constructor(private firestore: AngularFirestore) {
+  constructor(private firestore: AngularFirestore, private imageStorageService: ImageStorageService) {
   }
 
   getAllArtWorks() {
@@ -23,8 +24,9 @@ export class ArtWorkService {
     this.firestore.collection('ArtWork').doc(randomId).set(artWork).then();
   }
 
-  deleteArtWorks(artworkId) {
-    this.firestore.collection('ArtWork').doc(artworkId).delete().then(res => console.log(res));
+  deleteArtWorks(artwork) {
+    this.imageStorageService.deletePreviousImage('ArtImages', artwork.Urimage).then();
+    this.firestore.collection('ArtWork').doc(artwork.id).delete().then(res => console.log('ArtWork deleted'));
   }
 
   updateArtWorks(id: string, artWork) {

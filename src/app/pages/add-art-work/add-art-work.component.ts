@@ -23,7 +23,6 @@ export class AddArtWorkComponent implements OnInit {
   @ViewChild(AddDirectionCardComponent) appDirection: AddDirectionCardComponent;
 
 
-  // tslint:disable-next-line:no-shadowed-variable
   constructor(private ArtWorkService: ArtWorkService, private DirectionService: DirectionService, private SymbolService: SymbolService) {
   }
 
@@ -33,12 +32,13 @@ export class AddArtWorkComponent implements OnInit {
 
   addToDatabase(): void {
 
-    const artwork=this.appArtWork.creatArtWork();
-    this.ArtWorkService.addArtWorks(artwork);
-    const symbol=this.appSymbol.creatSymbol();
-    this.SymbolService.addSymbol(symbol);
-    const directionArray = this.appDirection.creatDirections();
-    this.DirectionService.addDirections(directionArray);
+    this.appArtWork.creatArtWork().then(res=>{
+      this.ArtWorkService.addArtWorks(res);
+      const symbol = this.appSymbol.creatSymbol();
+      this.SymbolService.addSymbol(symbol);
+    });
+    // const directionArray = this.appDirection.creatDirections();
+    // this.DirectionService.addDirections(directionArray);
 
     // console.log('ArtWork : ', artwork);
     // console.log('Symbol : ', symbol);

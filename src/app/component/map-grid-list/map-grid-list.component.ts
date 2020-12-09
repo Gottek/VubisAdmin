@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ImageStorageService} from '../../services/image-storage.service';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-map-grid-list',
@@ -17,7 +18,6 @@ export class MapGridListComponent implements OnInit {
 
   async getMaps(){
     this.MapsArray=await this.imageStorageService.getMapsImage();
-
   }
 
 }

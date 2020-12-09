@@ -14,6 +14,8 @@ export class DeleteEditArtWorkComponent implements OnInit {
   constructor(private artWorkService: ArtWorkService) {
   }
 
+  //mettre le tableau dynamique
+
   ngOnInit(): void {
     this.artWorkService.getAllArtWorks().subscribe(Arrayreponse => {
       this.ArtWorkArray = Arrayreponse.map(item => ({id: item.payload.doc.id, ...item.payload.doc.data() as {}} as unknown as ArtWork));

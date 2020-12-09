@@ -3,6 +3,7 @@ import {ArtWork} from '../../models/art-work.model';
 import {ArtWorkService} from '../../services/art-work.service';
 import {ImageStorageService} from '../../services/image-storage.service';
 import {AddArtworkCardComponent} from '../add-artwork-card/add-artwork-card.component';
+import {SymbolService} from '../../services/symbol.service';
 
 @Component({
   selector: 'app-cards',
@@ -15,7 +16,7 @@ export class CardsComponent implements OnInit {
   @ViewChild(AddArtworkCardComponent) addArtWorkCardComponent: AddArtworkCardComponent;
 
   // tslint:disable-next-line:no-shadowed-variable
-  constructor(private ImageStorageService: ImageStorageService, private ArtWorkService: ArtWorkService) {
+  constructor(private symbolService: SymbolService,private imageStorageService: ImageStorageService, private ArtWorkService: ArtWorkService) {
   }
 
   @Input()
@@ -31,12 +32,15 @@ export class CardsComponent implements OnInit {
   }
 
   async fetchImage() {
-    this.ArtWorkImageLink = await this.ImageStorageService.getArtworkImage(this.artWork.Urimage);
+    this.ArtWorkImageLink = await this.imageStorageService.getArtworkImage(this.artWork.Urimage);
   }
 
   async onDelete() {
     if (confirm('Are you sure to delete this artwork ?')) {
-      await this.ArtWorkService.deleteArtWorks(this.artWork.id);
+      const artWorkId=this.artWork.id;
+      await this.symbolService.deleteSymbol(this.artWork.id);
+      await this.ArtWorkService.deleteArtWorks(this.artWork);
+
     }
   }
 
@@ -58,10 +62,10 @@ export class CardsComponent implements OnInit {
 
     if (image){
       console.log("oui")
-      this.ImageStorageService.uploadImage('ArtImages', image.name, image).then(res =>
+      this.imageStorageService.uploadImage('ArtImages', image.name, image).then(res =>
           this.ArtWorkService.updateArtWorks(this.artWork.id, artWork)
         );
-      this.ImageStorageService.deletePreviousImage('ArtImages', this.artWork.Urimage).then();
+      this.imageStorageService.deletePreviousImage('ArtImages', this.artWork.Urimage).then();
     }
     else{
       console.log("non")

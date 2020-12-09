@@ -33,9 +33,9 @@ export class AddArtworkCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  creatArtWork() {
+  async creatArtWork() {
     const image = this.UploaderInput.image;
-    this.ImageService.uploadImage('ArtImages', image.name, image).then();
+    await this.ImageService.uploadImage('ArtImages', image.name, image)
     return {
       Author: this.AuthorInput.value,
       Date: this.DateInput.value,
@@ -43,6 +43,6 @@ export class AddArtworkCardComponent implements OnInit {
       Title: this.NameInput.value,
       Urimage: image.name
     };
-  }
 
+  }
 }

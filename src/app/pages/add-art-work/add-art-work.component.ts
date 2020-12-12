@@ -32,17 +32,14 @@ export class AddArtWorkComponent implements OnInit {
 
   addToDatabase(): void {
 
-    this.appArtWork.creatArtWork().then(res=>{
+    this.appArtWork.creatArtWork().then(res => {
       this.ArtWorkService.addArtWorks(res);
       const symbol = this.appSymbol.creatSymbol();
       this.SymbolService.addSymbol(symbol);
+      const directionArray = this.appDirection.creatDirections();
+      this.DirectionService.addDirections(directionArray);
     });
-    // const directionArray = this.appDirection.creatDirections();
-    // this.DirectionService.addDirections(directionArray);
 
-    // console.log('ArtWork : ', artwork);
-    // console.log('Symbol : ', symbol);
-    // console.log('Direction : ', directionArray);
 
   }
 }

@@ -5,9 +5,11 @@
     <app-clear-input [id]="item.id" [value]="item.distance" [titleText]="'Distance'">  </app-clear-input>
     {{item.id}}
   </div>-->
-  <div class="directionDistanceDiv" *ngFor="let item of myItems.controls; index as i">
-    <app-select [id]="i" [modelValue]="item.value[0]" > </app-select>
-    <app-clear-input [id]="i" [value]="item.value[1]" [titleText]="'Distance'">  </app-clear-input>
+  <div class="directionDistanceDiv" *ngFor="let item of arrayDistance.controls; index as i">
+    <app-select [formController]="arrayDirection.controls[i]"> </app-select>
+    <label>
+      <input matInput type="number" [formControl]="arrayDistance.controls[i]">
+    </label>
     {{i}}
   </div>
 
@@ -15,8 +17,8 @@
     <button mat-mini-fab color="primary" (click)="addNewOne()">
       <mat-icon>add</mat-icon>
     </button>
-<!--    <button mat-mini-fab color="primary" *ngIf="TableItem.length>1" (click)="removeOne()">-->
-    <button mat-mini-fab color="primary" *ngIf="myItems.controls.length>1" (click)="removeOne()">
+<!--    <button mat-mini-fasab color="primary" *ngIf="TableItem.length>1" (click)="removeOne()">-->
+    <button mat-mini-fab color="primary" *ngIf="arrayDirection.controls.length>1" (click)="removeOne()">
       <mat-icon>remove</mat-icon>
     </button>
   </div>

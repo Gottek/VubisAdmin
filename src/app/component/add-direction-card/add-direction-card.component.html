@@ -8,7 +8,7 @@
   <div class="directionDistanceDiv" *ngFor="let item of arrayDistance.controls; index as i">
     <app-select [formController]="arrayDirection.controls[i]"> </app-select>
     <label>
-      <input matInput type="text" [formControl]="arrayDistance.controls[i]">
+      <input matInput type="number" [formControl]="arrayDistance.controls[i]">
     </label>
     {{i}}
   </div>

@@ -39,7 +39,4 @@ export class SymbolService {
       });
   }
 
-  updateSymbol() {
-    return this.firestore.collection('Symbol').snapshotChanges();
-  }
 }

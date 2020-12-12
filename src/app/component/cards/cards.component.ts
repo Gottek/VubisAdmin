@@ -4,6 +4,7 @@ import {ArtWorkService} from '../../services/art-work.service';
 import {ImageStorageService} from '../../services/image-storage.service';
 import {AddArtworkCardComponent} from '../add-artwork-card/add-artwork-card.component';
 import {SymbolService} from '../../services/symbol.service';
+import {DirectionService} from '../../services/direction.service';
 
 @Component({
   selector: 'app-cards',
@@ -16,7 +17,7 @@ export class CardsComponent implements OnInit {
   @ViewChild(AddArtworkCardComponent) addArtWorkCardComponent: AddArtworkCardComponent;
 
   // tslint:disable-next-line:no-shadowed-variable
-  constructor(private symbolService: SymbolService,private imageStorageService: ImageStorageService, private ArtWorkService: ArtWorkService) {
+  constructor(private directionService:DirectionService,private symbolService: SymbolService,private imageStorageService: ImageStorageService, private ArtWorkService: ArtWorkService) {
   }
 
   @Input()
@@ -37,9 +38,10 @@ export class CardsComponent implements OnInit {
 
   async onDelete() {
     if (confirm('Are you sure to delete this artwork ?')) {
-      const artWorkId=this.artWork.id;
+      // const artWorkId=this.artWork.id;
       await this.symbolService.deleteSymbol(this.artWork.id);
       await this.ArtWorkService.deleteArtWorks(this.artWork);
+      await this.directionService.deleteDirection(this.artWork.id);
 
     }
   }
@@ -49,8 +51,8 @@ export class CardsComponent implements OnInit {
   }
 
   handleOkMiddle(): void {
-    const Description = this.addArtWorkCardComponent.NameInput.value;
-    const Title = this.addArtWorkCardComponent.DescriptionInput.value;
+    const Description = this.addArtWorkCardComponent.DescriptionInput.value;
+    const Title = this.addArtWorkCardComponent.NameInput.value;
     const Author = this.addArtWorkCardComponent.AuthorInput.value;
 
     const image = this.addArtWorkCardComponent.UploaderInput.image;

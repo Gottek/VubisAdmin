@@ -10,13 +10,14 @@ export class ClearInputComponent implements OnInit {
 
   @Input() value = '';
   @Input() id;
-
+  //@Input() formController;
   @Input() titleText = 'An example';
 
   constructor() {
   }
 
   ngOnInit(): void {
+    // console.log("tu es dans le clear input ",this.formController)
   }
 
   onChange(): void {

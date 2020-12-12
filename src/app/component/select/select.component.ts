@@ -7,8 +7,9 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class SelectComponent implements OnInit {
 
-  @Input() modelValue: string;
+  // @Input() modelValue: string;
   @Input() id;
+  @Input() formController ="Left"
   items=[{value: 'Left', viewValue: 'Left'},{value: 'Right', viewValue: 'Right'}]
   constructor() {
   }

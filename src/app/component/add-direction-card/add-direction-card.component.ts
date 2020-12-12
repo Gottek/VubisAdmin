@@ -1,7 +1,4 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {ClearInputComponent} from '../clear-input/clear-input.component';
-import {UploaderComponent} from '../uploader/uploader.component';
-import {SelectComponent} from '../select/select.component';
 import {ArtWorkService} from '../../services/art-work.service';
 import {FormArray, FormBuilder, FormControl} from '@angular/forms';
 
@@ -13,42 +10,28 @@ import {FormArray, FormBuilder, FormControl} from '@angular/forms';
 export class AddDirectionCardComponent implements OnInit {
 
 
-  TableItem = [{
-    direction:'Left',
-    distance:1
-  }];
+  arrayDirection = this.fb.array([this.fb.control("Toit")]);
+  arrayDistance = this.fb.array([this.fb.control(20)]);
+  // arrayDistance = new FormArray([new FormArray([new FormControl(1)])]);
 
-  myItems = new FormArray([new FormArray([
-    new FormControl('Left'),
-    new FormControl(1)
-  ])]);
-
-  // @ViewChild(SelectComponent) directionsTab: SelectComponent;
-  // @ViewChild(ClearInputComponent) distanceTab: ClearInputComponent;
-
-  constructor(private ArtWorkService: ArtWorkService) {
+  constructor(private ArtWorkService: ArtWorkService,private fb: FormBuilder) {
   }
 
   addNewOne() {
-   /* this.TableItem.push({
-      direction:'Right',
-      distance:22
-    });*/
-    this.myItems.push(new FormArray([new FormControl('Right'),new FormControl(22)]));
-    console.log(this.myItems.controls);
+    this.arrayDirection.push(new FormControl("Right"))
+    this.arrayDistance.push(new FormControl(49))
+    // this.myItems.push(new FormArray([new FormControl('Right'),new FormControl(22)]));
+    // this.myItems.controls.forEach(item=>console.log(item.value));
+
+    console.log("début -----------------")
+    this.arrayDistance.controls.forEach(item=>console.log(item.value))
+    this.arrayDirection.controls.forEach(item=>console.log(item.value))
+    console.log("fin-----------------")
   }
 
   removeOne(){
-    // this.TableItem.pop();
-    this.myItems.controls.pop();
-  }
-
-  creatDirections(){
-
-    console.log(this.myItems.controls)
-    // console.log(this.TableItem);
-    // return directions;
-
+    this.arrayDistance.controls.pop();
+    this.arrayDirection.controls.pop();
   }
 
   ngOnInit(): void {

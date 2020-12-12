@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {fr_FR, NZ_I18N} from 'ng-zorro-antd/i18n';
 import {registerLocaleData} from '@angular/common';
@@ -67,31 +67,32 @@ registerLocaleData(fr);
     AddDirectionCardComponent,
     SelectComponent,
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        HttpClientModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        NzTabsModule,
-        MatTabsModule,
-        MatToolbarModule,
-        NzInputModule,
-        NzIconModule,
-        MatFormFieldModule,
-        MatIconModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig),
-        AngularFirestoreModule,
-        AngularFireStorageModule,
-        MatButtonModule,
-        MatInputModule,
-        MatCardModule,
-        MatGridListModule,
-        MatDatepickerModule,
-        NgZorroAntdModule,
-        MatSelectModule,
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NzTabsModule,
+    MatTabsModule,
+    MatToolbarModule,
+    NzInputModule,
+    NzIconModule,
+    MatFormFieldModule,
+    MatIconModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    MatButtonModule,
+    MatInputModule,
+    MatCardModule,
+    MatGridListModule,
+    MatDatepickerModule,
+    NgZorroAntdModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+  ],
   providers: [ArtWorkService, ImageStorageService, DirectionService, SymbolService, {provide: NZ_I18N, useValue: fr_FR}],
   bootstrap: [AppComponent]
 })

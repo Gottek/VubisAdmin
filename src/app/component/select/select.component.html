@@ -1,6 +1,6 @@
 <mat-form-field appearance="legacy">
   <mat-label>Direction</mat-label>
-  <mat-select [value]="modelValue" (selectionChange)="onchange($event)">
+  <mat-select  [formControl]="formController" (selectionChange)="onchange($event)">
     <mat-option *ngFor="let item of items" [value]="item.value">
       {{item.viewValue}}
     </mat-option>

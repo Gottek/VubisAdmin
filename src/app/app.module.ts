@@ -44,6 +44,7 @@ import {AddSymbolCardComponent} from './component/add-symbol-card/add-symbol-car
 import {AddDirectionCardComponent} from './component/add-direction-card/add-direction-card.component';
 import {SelectComponent} from './component/select/select.component';
 import {MatSelectModule} from '@angular/material/select';
+import {MatSnackBarModule} from '@angular/material/snack-bar'
 
 registerLocaleData(fr);
 
@@ -92,6 +93,7 @@ registerLocaleData(fr);
     NgZorroAntdModule,
     MatSelectModule,
     ReactiveFormsModule,
+    MatSnackBarModule
   ],
   providers: [ArtWorkService, ImageStorageService, DirectionService, SymbolService, {provide: NZ_I18N, useValue: fr_FR}],
   bootstrap: [AppComponent]

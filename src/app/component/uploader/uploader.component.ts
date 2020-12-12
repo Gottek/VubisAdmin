@@ -1,8 +1,6 @@
 import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {NzMessageService, NzUploadFile} from 'ng-zorro-antd';
 import {Observable, Observer} from 'rxjs';
-import {ImageStorageService} from '../../services/image-storage.service';
-import {element} from 'protractor';
 
 @Component({
   selector: 'app-uploader',
@@ -15,13 +13,13 @@ export class UploaderComponent implements OnInit, AfterViewInit {
   @Input() avatarUrl?: string;
   image: File;
   fileList: NzUploadFile[] = [];
-  ImageContainer;
   canvas;
   context;
 
-  constructor(private msg: NzMessageService, private imageService: ImageStorageService) {
+  constructor(private msg: NzMessageService) {
   }
 
+  //Usefull for dynamics position of POI
   ngAfterViewInit(): void {
   //   this.ImageContainer = document.getElementById('getContainer');
   //   this.canvas = document.getElementById('myCanvas');

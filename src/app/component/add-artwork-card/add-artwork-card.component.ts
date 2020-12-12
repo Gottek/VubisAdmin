@@ -26,7 +26,6 @@ export class AddArtworkCardComponent implements OnInit {
   @ViewChild(UploaderComponent) UploaderInput: UploaderComponent;
 
 
-  // tslint:disable-next-line:no-shadowed-variable
   constructor(private ImageService: ImageStorageService) {
   }
 

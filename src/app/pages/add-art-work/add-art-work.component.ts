@@ -1,12 +1,12 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Symbol} from '../../models/symbol.model';
-import {Direction} from '../../models/direction.model';
 import {AddArtworkCardComponent} from '../../component/add-artwork-card/add-artwork-card.component';
 import {AddSymbolCardComponent} from '../../component/add-symbol-card/add-symbol-card.component';
 import {AddDirectionCardComponent} from '../../component/add-direction-card/add-direction-card.component';
 import {ArtWorkService} from '../../services/art-work.service';
 import {SymbolService} from '../../services/symbol.service';
 import {DirectionService} from '../../services/direction.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {NzMessageService} from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-add-art-work',
@@ -15,15 +15,12 @@ import {DirectionService} from '../../services/direction.service';
 })
 export class AddArtWorkComponent implements OnInit {
 
-  // tslint:disable-next-line:ban-types
-  Sybmol: Symbol;
-  Directions: Direction[];
   @ViewChild(AddArtworkCardComponent) appArtWork: AddArtworkCardComponent;
   @ViewChild(AddSymbolCardComponent) appSymbol: AddSymbolCardComponent;
   @ViewChild(AddDirectionCardComponent) appDirection: AddDirectionCardComponent;
 
 
-  constructor(private ArtWorkService: ArtWorkService, private DirectionService: DirectionService, private SymbolService: SymbolService) {
+  constructor(private msg: NzMessageService,private _snackBar: MatSnackBar,private ArtWorkService: ArtWorkService, private DirectionService: DirectionService, private SymbolService: SymbolService) {
   }
 
 
@@ -38,8 +35,8 @@ export class AddArtWorkComponent implements OnInit {
       this.SymbolService.addSymbol(symbol);
       const directionArray = this.appDirection.creatDirections();
       this.DirectionService.addDirections(directionArray);
+      // this._snackBar.open("Added Successfully ! ","Ok");
+      this.msg.success('Added Successfully !');
     });
-
-
   }
 }

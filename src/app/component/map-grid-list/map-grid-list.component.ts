@@ -9,6 +9,7 @@ import {Subject} from 'rxjs';
 })
 export class MapGridListComponent implements OnInit {
 
+  //this is the grid you see on the "Maps" tab
   MapsArray=[];
   constructor(private imageStorageService:ImageStorageService) { }
 
@@ -17,7 +18,7 @@ export class MapGridListComponent implements OnInit {
   }
 
   async getMaps(){
-    this.MapsArray=await this.imageStorageService.getMapsImage();
+    this.MapsArray=await this.imageStorageService.getMapsImage(); // getting the maps from the firebase storage
   }
 
 }

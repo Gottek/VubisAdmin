@@ -9,9 +9,11 @@ import {Observable, Observer} from 'rxjs';
 })
 export class UploaderComponent implements OnInit, AfterViewInit {
 
+  //used to uplaod an image
+  //It has been taken from ant-zorro on internet
   loading = false;
-  @Input() avatarUrl?: string;
-  image: File;
+  @Input() avatarUrl?: string; // the preview of the image
+  image: File; // the image which will be uploaded at the end
   fileList: NzUploadFile[] = [];
   canvas;
   context;
@@ -30,6 +32,7 @@ export class UploaderComponent implements OnInit, AfterViewInit {
 
   }
 
+  //the beginning of the solution we were implemeting to make dynamic POI, not finished yet
   // getClickPosition(e): void {
   //   // console.log(e);
   //   let xPosition = e.offsetX;
@@ -46,12 +49,13 @@ export class UploaderComponent implements OnInit, AfterViewInit {
   beforeUpload = (file: NzUploadFile, fileList: NzUploadFile[]) => {
     return new Observable((observer: Observer<boolean>) => {
       const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-      if (!isJpgOrPng) {
+      if (!isJpgOrPng) { //selecting which type of file can be added
         this.msg.error('You can only upload JPG file!');
         observer.complete();
         return;
       }
       // tslint:disable-next-line:no-non-null-assertion
+      //checking the file size
       const isLt2M = file.size! / 1024 / 1024 < 2;
       if (!isLt2M) {
         this.msg.error('Image must smaller than 2MB!');
@@ -76,13 +80,12 @@ export class UploaderComponent implements OnInit, AfterViewInit {
         this.loading = true;
         break;
       case 'done':
-        // Get this url from response in real world.
         // tslint:disable-next-line:no-non-null-assertion
         this.getBase64(info.file!.originFileObj!, (img: string) => {
           this.loading = false;
           this.avatarUrl = img;
           // tslint:disable-next-line:no-non-null-assertion
-          this.image = info.file!.originFileObj!;
+          this.image = info.file!.originFileObj!; //I get the image path here
         });
         break;
       case 'error':

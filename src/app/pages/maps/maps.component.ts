@@ -7,6 +7,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class MapsComponent implements OnInit {
 
+  //the gridList component or the third map
   constructor() {
   }
 

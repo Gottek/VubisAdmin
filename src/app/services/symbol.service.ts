@@ -11,10 +11,12 @@ export class SymbolService {
   constructor(private firestore: AngularFirestore, private ImageStorageService: ImageStorageService) {
   }
 
+  //method which will be used to implement the symbol edit feature
   getAllSymbol() {
     return this.firestore.collection('Symbol').snapshotChanges();
   }
 
+  //add a symbol
   addSymbol(symbol) {
     const randomId = this.firestore.createId();
     this.firestore.collection('Symbol').doc(randomId).set(symbol).then();
@@ -23,20 +25,16 @@ export class SymbolService {
   deleteSymbol(artWorkId) {
     const cldFirestore = this.firestore.collection('Symbol');
     const imageStorageService = this.ImageStorageService;
-    cldFirestore.ref.where('idArtwork', '==', artWorkId)
+    cldFirestore.ref.where('idArtwork', '==', artWorkId) // I select the symbol which has the same id as the artwork send as argument
       .get().then(function(querySnapshot) {
-      querySnapshot.forEach(doc => {
-        console.log(doc.data());
+      querySnapshot.forEach(doc => { // when I find it, I delete the image associate with it and I delete the symbol too
         imageStorageService.deletePreviousImage('Maps', doc.data().url).then(res => {
-            console.log('oui oui');
             cldFirestore.doc(doc.id).delete().then(res => console.log('Symbol deleted'));
           }
         );
       });
     })
-      .catch(function(error) {
-        console.log('Error getting documents: ', error);
-      });
+      .catch(error=> console.log('Error getting documents: ', error));
   }
 
 }

@@ -29,14 +29,14 @@ export class AddArtWorkComponent implements OnInit {
 
   addToDatabase(): void {
 
+    //call the creating method contained inside component accessed from above
     this.appArtWork.creatArtWork().then(res => {
-      this.ArtWorkService.addArtWorks(res);
+      this.ArtWorkService.addArtWorks(res); //add artwork to firebase
       const symbol = this.appSymbol.creatSymbol();
-      this.SymbolService.addSymbol(symbol);
+      this.SymbolService.addSymbol(symbol); //add symbole to firebase
       const directionArray = this.appDirection.creatDirections();
-      this.DirectionService.addDirections(directionArray);
-      // this._snackBar.open("Added Successfully ! ","Ok");
-      this.msg.success('Added Successfully !');
+      this.DirectionService.addDirections(directionArray); // add directions to firebase
+      this.msg.success('Added Successfully !'); //snackbar to tell you that everything is ok
     });
   }
 }

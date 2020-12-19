@@ -9,6 +9,7 @@ export class ToolbarComponent implements OnInit {
 
   constructor() { }
 
+  //the banner you can see at the beginning
   ngOnInit(): void {
   }
 

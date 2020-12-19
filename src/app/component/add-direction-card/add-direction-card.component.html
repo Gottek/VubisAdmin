@@ -1,10 +1,6 @@
 <div class="cardArtWork">
   <h2>Direction</h2>
-  <!--<div class="directionDistanceDiv" *ngFor="let item of TableItem">
-    <app-select [id]="item.id" [modelValue]="item.direction"> </app-select>
-    <app-clear-input [id]="item.id" [value]="item.distance" [titleText]="'Distance'">  </app-clear-input>
-    {{item.id}}
-  </div>-->
+<!-- I'm itereting ower the arrayDirections as many times as the user has pressed the button "+"-->
   <div class="directionDistanceDiv" *ngFor="let item of arrayDistance.controls; index as i">
     <app-select [formController]="arrayDirection.controls[i]"> </app-select>
     <label>

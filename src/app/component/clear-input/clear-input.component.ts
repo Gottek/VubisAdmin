@@ -8,9 +8,8 @@ import {AddDirectionCardComponent} from '../add-direction-card/add-direction-car
 })
 export class ClearInputComponent implements OnInit {
 
+  //basic input
   @Input() value = '';
-  @Input() id;
-  //@Input() formController;
   @Input() titleText = 'An example';
 
   constructor() {

@@ -7,6 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class WarningButtonComponent implements OnInit {
 
+  //basic button
   @Input()
   buttonText = '';
   constructor() { }

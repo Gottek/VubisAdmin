@@ -13,35 +13,22 @@ export class ImageStorageService {
   }
 
   async getArtworkImage(imageLink) {
-    // await storageRef.storageAll().then(result => result.items.forEach(imgRef=> imgRef.getDownloadURL().then(url => console.log(url))));
-    await this.storageRef.child(`ArtImages/${imageLink}`).getDownloadURL().then(resp => imageLink = resp);
+    await this.storageRef.child(`ArtImages/${imageLink}`).getDownloadURL().then(resp => imageLink = resp); // get all the artworks image
     return imageLink;
   }
 
-  async uploadImage(repository: string, fileName: string, img: Blob) {
+  async uploadImage(repository: string, fileName: string, img: Blob) { // uploading a image to firebase storage with a blob file
     return this.storageRef.child(`${repository}/${fileName}`).put(img);
   }
 
-  async deletePreviousImage(repository: string, fileName: string) {
+  async deletePreviousImage(repository: string, fileName: string) { // delete the image with a specific repository selected
     this.storageRef.child(`${repository}/${fileName}`).delete().then(snapshot => console.log('Image: ' + fileName + ' deleted'));
   }
 
-  async getMapsImage(){
+  async getMapsImage(){ //get all the maps contained in the firebase storage as a list and the I'm iterating over them to get their url.
+    //Finally, I push them all inside an array
     await  this.storageRef.child('Maps').listAll().then(result => result.items.forEach(imgRef => imgRef.getDownloadURL().then(url => this.mapsArray.push(url))));
     return this.mapsArray;
-    // await this.storageRef.child(`Maps/${imageLink}`).getDownloadURL().then(resp => imageLink = resp);
-  }
-  // getMapsImage(): Observable<any> {
-  //   return new Observable(observer => {
-  //     this.storageRef.child('Maps').listAll().then(result => result.items.forEach(imgRef => imgRef.getDownloadURL().then(url => this.mapsArray.next(url))));
-  //   });
-  // }
-
-  async uploadMapsImage(imageLink) {
-    // let storageRef = this.firestorage.storage.ref();
-    // // await storageRef.storageAll().then(result => result.items.forEach(imgRef=> imgRef.getDownloadURL().then(url => console.log(url))));
-    // await storageRef.child(`ArtImages/${imageLink}`).getDownloadURL().then(resp => imageLink = resp);
-    // return imageLink;
   }
 
 }

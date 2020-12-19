@@ -16,8 +16,8 @@ export class DirectionService {
   }
 
   addDirections(direction) {
+    //I create an artwork as the same way as the artwork
     const randomId = this.firestore.createId();
-    // const artworkId = this.firestore.createId();
     const ObjectDirection = {'direction': direction[0], 'distance': direction[1], 'idArtWork': this.artworkService.currentArtWorkId};
     this.firestore.collection('Direction').doc(randomId).set(ObjectDirection).then();
 
@@ -25,8 +25,9 @@ export class DirectionService {
   }
 
   deleteDirection(artWorkId) {
+    // I get the direction which has the same id as the artwork
     const cldFirestore = this.firestore.collection('Direction').ref.where('idArtWork', '==', artWorkId)
-      .get().then(querySnapshot => querySnapshot.forEach(doc => {
+      .get().then(querySnapshot => querySnapshot.forEach(doc => { // and then I delete him
         this.firestore.collection('Direction').doc(doc.id).delete().then();
       }));
   }

@@ -11,8 +11,7 @@ import {ArtWorkService} from '../../services/art-work.service';
 })
 export class AddSymbolCardComponent implements OnInit {
 
-  // @Output() Symbol: EventEmitter<Symbol> = new EventEmitter();
-
+  //inputs coming from the symbolCard
   @ViewChild(ClearInputComponent) SymbolInput: ClearInputComponent;
   @ViewChild(UploaderComponent) UploaderInput: UploaderComponent;
 
@@ -24,7 +23,7 @@ export class AddSymbolCardComponent implements OnInit {
 
   creatSymbol() {
     const image = this.UploaderInput.image;
-    this.ImageService.uploadImage('Maps', image.name, image).then();
+    this.ImageService.uploadImage('Maps', image.name, image).then(); //uploading the map to firebase
     return {
       Symbol: this.SymbolInput.value,
       url: image.name,

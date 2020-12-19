@@ -7,6 +7,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AllTabsComponent implements OnInit {
 
+  //the tabsBar with three tabs
   constructor() {
   }
 

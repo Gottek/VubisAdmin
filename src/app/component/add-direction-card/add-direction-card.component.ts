@@ -9,33 +9,27 @@ import {FormBuilder, FormControl} from '@angular/forms';
 })
 export class AddDirectionCardComponent implements OnInit {
 
-
+  //one array for direction an another one for the distance, both of them will be added in firebase
   arrayDirection = this.fb.array([this.fb.control('Right')]);
   arrayDistance = this.fb.array([this.fb.control(20)]);
 
-  // arrayDistance = new FormArray([new FormArray([new FormControl(1)])]);
 
-  constructor(private ArtWorkService: ArtWorkService, private fb: FormBuilder) {
-  }
+  //formBuilder is needed to make dynamics forms
+  constructor(private ArtWorkService: ArtWorkService, private fb: FormBuilder) {}
 
   addNewOne() {
     this.arrayDirection.push(new FormControl('Right'));
     this.arrayDistance.push(new FormControl(49));
-    // this.myItems.push(new FormArray([new FormControl('Right'),new FormControl(22)]));
-    // this.myItems.controls.forEach(item=>console.log(item.value));
-
-    // console.log("début -----------------")
-    // this.arrayDistance.controls.forEach(item=>console.log(item.value))
-    // this.arrayDirection.controls.forEach(item=>console.log(item.value))
-    // console.log("fin-----------------")
   }
 
   removeOne() {
+    //pop to remove the last one
     this.arrayDistance.controls.pop();
     this.arrayDirection.controls.pop();
   }
 
   creatDirections() {
+    //getRawValue allows us the get only the values and not the entire FormControl
     return [this.arrayDirection.getRawValue(), this.arrayDistance.getRawValue()];
   }
 

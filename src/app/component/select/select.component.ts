@@ -7,19 +7,13 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class SelectComponent implements OnInit {
 
-  // @Input() modelValue: string;
-  @Input() id;
+  //basic select with only two posibility
   @Input() formController ="Left"
   items=[{value: 'Left', viewValue: 'Left'},{value: 'Right', viewValue: 'Right'}]
   constructor() {
   }
 
   ngOnInit(): void {
-  }
-
-  onchange(e):void {
-    // console.log(e.value);
-    // console.log(this.id);
   }
 
 }

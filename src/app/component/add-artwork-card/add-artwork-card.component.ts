@@ -14,11 +14,10 @@ import {ArtWorkService} from '../../services/art-work.service';
 })
 export class AddArtworkCardComponent implements OnInit {
 
-
   @Input() artWork: ArtWork = new ArtWork(null, '', new Date(), '', '', '');
   @Input()imageLink = '';
-  @Output() newArtWork = new EventEmitter<ArtWork>();
 
+  //every child here are inputs coming from the artwork Card
   @ViewChild('AuthorArtWork') AuthorInput: ClearInputComponent;
   @ViewChild('NameArtWork') NameInput: ClearInputComponent;
   @ViewChild(ClearDescriptionInputComponent) DescriptionInput: ClearDescriptionInputComponent;
@@ -32,9 +31,10 @@ export class AddArtworkCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //method which will be called after to creat an artwork
   async creatArtWork() {
-    const image = this.UploaderInput.image;
-    await this.ImageService.uploadImage('ArtImages', image.name, image)
+    const image = this.UploaderInput.image; // I fetch from the uploaderInput which is another component
+    await this.ImageService.uploadImage('ArtImages', image.name, image) // I'm waiting the image artwork has been successfully added to return an artwork
     return {
       Author: this.AuthorInput.value,
       Date: this.DateInput.value,
